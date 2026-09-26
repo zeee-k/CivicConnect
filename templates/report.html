@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Report an Issue{% endblock %}
+{% block content %}
+<section class="page-intro"><span class="eyebrow">New complaint</span><h1>Report a civic issue.</h1><p>Give enough detail for someone else to understand what needs attention.</p></section>
+<section class="form-card report-card"><div class="form-card-top"><div><span class="eyebrow">Issue details</span><h2>Tell us what’s happening</h2></div><span class="required-note">* Required</span></div>
+  <form method="post" enctype="multipart/form-data" class="report-form">
+    <div class="form-row"><label>Issue category *<select name="category" required><option value="">Choose a category</option>{% for item in categories %}<option value="{{ item }}" {% if request.form.get('category') == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select></label><label>Issue title *<input type="text" name="title" required placeholder="e.g. Large pothole near the station" value="{{ request.form.get('title','') }}"></label></div>
+    <label>Description *<textarea name="description" rows="5" required placeholder="Describe what you noticed, how long it has been happening and who it affects.">{{ request.form.get('description','') }}</textarea><small class="field-hint">A clear description helps the administrator understand the report.</small></label>
+    <div class="form-row"><label>Area *<select name="area" required><option value="">Choose an area</option>{% for item in areas %}<option value="{{ item }}" {% if request.form.get('area') == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select></label><label>Specific location *<input type="text" name="location" required placeholder="e.g. Near Mira Road Railway Station" value="{{ request.form.get('location','') }}"></label></div>
+    <label class="upload-box"><span class="upload-icon">↑</span><span><strong>Add a photo <em>(optional)</em></strong><small>JPG, PNG or WEBP · max 5 MB</small></span><input id="image" type="file" name="image" accept=".jpg,.jpeg,.png,.webp"><span id="file-name">Choose file</span></label>
+    <div class="form-actions"><a class="button button-ghost" href="{{ url_for('dashboard') }}">Cancel</a><button class="button button-primary" type="submit">Submit report <span>→</span></button></div>
+  </form>
+</section>
+{% endblock %}

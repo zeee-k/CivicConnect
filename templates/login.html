@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Log in{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-intro"><span class="eyebrow">Welcome back</span><h1>Keep your neighbourhood in view.</h1><p>Log in to submit a new issue, check complaint updates and see your reporting history.</p><div class="auth-quote">“Small, well-recorded reports make local problems easier to understand.”</div></div>
+  <div class="form-card auth-card"><div class="card-heading"><span class="eyebrow">Account access</span><h2>Log in to CivicConnect</h2><p>Use your citizen or admin account.</p></div>
+    <form method="post" class="stack-form">
+      <label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+      <label>Password<input type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required></label>
+      <button class="button button-primary full" type="submit">Log in <span>→</span></button>
+    </form>
+    <div class="demo-box"><strong>Demo accounts</strong><p><b>Citizen:</b> citizen@civicconnect.local / Citizen@123</p><p><b>Admin:</b> admin@civicconnect.local / Admin@123</p></div>
+    <p class="form-foot">Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+  </div>
+</section>
+{% endblock %}

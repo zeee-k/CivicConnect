@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-intro"><span class="eyebrow">Join the community</span><h1>Make local issues easier to follow.</h1><p>Create a citizen account to report civic concerns around Mira-Bhayandar and keep track of what happens next.</p><div class="feature-list"><div><b>01</b><span>Report with useful context</span></div><div><b>02</b><span>Keep every complaint together</span></div><div><b>03</b><span>Follow status changes</span></div></div></div>
+  <div class="form-card auth-card"><div class="card-heading"><span class="eyebrow">Citizen account</span><h2>Create your account</h2><p>It only takes a minute.</p></div>
+    <form method="post" class="stack-form">
+      <label>Full name<input type="text" name="name" autocomplete="name" placeholder="Your full name" required value="{{ request.form.get('name','') }}"></label>
+      <label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com" required value="{{ request.form.get('email','') }}"></label>
+      <label>Password<input type="password" name="password" autocomplete="new-password" placeholder="At least 8 characters" required></label>
+      <label>Confirm password<input type="password" name="confirm_password" autocomplete="new-password" placeholder="Repeat your password" required></label>
+      <button class="button button-primary full" type="submit">Create account <span>→</span></button>
+    </form>
+    <p class="form-foot">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+  </div>
+</section>
+{% endblock %}

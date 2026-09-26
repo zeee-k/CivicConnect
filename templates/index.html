@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Report Civic Issues{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="pulse-dot"></span> Mira-Bhayandar, Maharashtra</div>
+    <h1>Report civic issues.<br><em>Improve your corner.</em></h1>
+    <p class="hero-lede">Help improve your local area by reporting potholes, garbage accumulation, broken streetlights, drainage problems, water supply issues and other civic concerns.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{ url_for('report') }}">Report an Issue <span>→</span></a>
+      <a class="button button-ghost" href="{{ url_for('complaints') }}">Track My Complaints</a>
+    </div>
+    <div class="hero-note"><span class="note-icon">i</span> A student-built academic prototype for understanding issue tracking.</div>
+  </div>
+  <div class="hero-visual">
+    <div class="map-card">
+      <div class="map-grid"></div>
+      <div class="map-label label-one">Mira Road East</div>
+      <div class="map-label label-two">Bhayandar East</div>
+      <div class="map-label label-three">Golden Nest</div>
+      <span class="map-pin pin-one"></span><span class="map-pin pin-two"></span><span class="map-pin pin-three"></span>
+      <div class="map-status"><span class="status-dot status-in-progress"></span><strong>Issue activity</strong><small>Across 12 local areas</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section how-section">
+  <div class="section-heading"><span class="eyebrow">Simple by design</span><h2>From report to resolution.</h2><p>Keep a clear record of the issue, follow its progress and see when it is updated.</p></div>
+  <div class="steps">
+    <div class="step"><span>01</span><h3>Report an issue</h3><p>Share what happened and where it happened.</p></div>
+    <div class="step"><span>02</span><h3>Submit details</h3><p>Add a category, description and optional photo.</p></div>
+    <div class="step"><span>03</span><h3>Track progress</h3><p>Check your complaint status from your dashboard.</p></div>
+    <div class="step"><span>04</span><h3>See updates</h3><p>Administrators can add remarks and change status.</p></div>
+  </div>
+</section>
+
+<section class="section category-section">
+  <div class="section-heading compact"><span class="eyebrow">What you can report</span><h2>Everyday concerns, in one place.</h2></div>
+  <div class="category-grid">
+    {% for label, icon in [('Roads & potholes','01'),('Waste management','02'),('Streetlights','03'),('Water & drainage','04'),('Footpaths & roads','05'),('Parks & public spaces','06')] %}
+      <div class="category-card"><span>{{ icon }}</span><strong>{{ label }}</strong><small>Mira-Bhayandar local area</small></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="disclaimer-band"><div><span class="eyebrow">Please note</span><h2>CivicConnect is a learning project.</h2><p>Reports stay within this academic prototype and are not submitted to any government department.</p></div><a href="{{ url_for('register') }}" class="button button-light">Create a free account</a></section>
+{% endblock %}

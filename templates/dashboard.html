@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<section class="page-intro split-intro"><div><span class="eyebrow">Citizen dashboard</span><h1>Welcome, {{ g.user.name.split()[0] }}.</h1><p>Here’s the latest view of your Mira-Bhayandar reports.</p></div><a class="button button-primary" href="{{ url_for('report') }}">+ Report New Issue</a></section>
+<section class="stat-grid">
+  {% for label, value, class_name in [('Total reports', counts['Total'], 'stat-blue'),('Pending', counts['Pending'], 'stat-yellow'),('Assigned', counts['Assigned'], 'stat-purple'),('In progress', counts['In Progress'], 'stat-orange'),('Resolved', counts['Resolved'], 'stat-green')] %}
+    <div class="stat-card {{ class_name }}"><small>{{ label }}</small><strong>{{ value }}</strong><span>reports</span></div>
+  {% endfor %}
+</section>
+<section class="content-card"><div class="card-toolbar"><div><span class="eyebrow">Your activity</span><h2>My Mira-Bhayandar Reports</h2></div><a href="{{ url_for('complaints') }}" class="text-link">View all →</a></div>
+  {% if recent %}<div class="table-wrap"><table><thead><tr><th>Complaint ID</th><th>Issue</th><th>Category</th><th>Area</th><th>Date</th><th>Status</th><th></th></tr></thead><tbody>{% for complaint in recent %}<tr><td class="mono">CC-{{ '%04d'|format(complaint.id) }}</td><td><strong>{{ complaint.title }}</strong></td><td>{{ complaint.category }}</td><td>{{ complaint.area }}</td><td>{{ complaint.created_at.split(',')[0] }}</td><td><span class="status-badge status-{{ complaint.status|lower|replace(' ', '-') }}">{{ complaint.status }}</span></td><td><a class="row-link" href="{{ url_for('complaint_detail', complaint_id=complaint.id) }}">View</a></td></tr>{% endfor %}</tbody></table></div>{% else %}<div class="empty-state"><strong>No reports yet.</strong><p>When you report an issue, it will appear here.</p><a class="button button-secondary" href="{{ url_for('report') }}">Report your first issue</a></div>{% endif %}
+</section>
+{% endblock %}
