@@ -166,4 +166,4 @@ These are intentionally not implemented in this beginner project:
 
 ## Academic disclaimer
 
-CivicConnect is an academic mini-project prototype for learning Flask, SQLite, HTML, CSS, JavaScript and basic role-based workflows. It is not an official MBMC service, is not directly connected to MBMC systems and does not submit complaints to MBMC or any government department.
+CivicConnect is a mini project created by Zeeshan and Ashwin. It is not any official website. 
